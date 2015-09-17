@@ -87,11 +87,11 @@ public class BodyBuilder {
 	private void createRectangle(World world, RectangleMapObject rectangleObject, float density, float friction, float restitution){
 		Rectangle rect = rectangleObject.getRectangle();
 		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(rect.width / SupaBox.PPM / 2f, rect.height / SupaBox.PPM / 2f);
+		shape.setAsBox(rect.width / SupaBax.PPM / 2f, rect.height / SupaBax.PPM / 2f);
 		
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.type = BodyType.StaticBody;
-		bodyDef.position.set(new Vector2((rect.x + rect.width / 2f) / SupaBox.PPM, (rect.y + rect.height / 2f) / SupaBox.PPM));
+		bodyDef.position.set(new Vector2((rect.x + rect.width / 2f) / SupaBax.PPM, (rect.y + rect.height / 2f) / SupaBax.PPM));
 		
 		Body body = world.createBody(bodyDef);
 		
@@ -121,7 +121,7 @@ public class BodyBuilder {
 		float[] worldVertices = new float[vertices.length];
 		
 		for(int i = 0; i < vertices.length; i++){
-			worldVertices[i] = vertices[i] / SupaBox.PPM;
+			worldVertices[i] = vertices[i] / SupaBax.PPM;
 		}
 		
 		shape.set(worldVertices);
@@ -157,7 +157,7 @@ public class BodyBuilder {
 		float[] worldVertices = new float[vertices.length];
 		
 		for(int i = 0; i < vertices.length; i++){
-			worldVertices[i] = vertices[i] / SupaBox.PPM;
+			worldVertices[i] = vertices[i] / SupaBax.PPM;
 		}
 		
 		shape.createChain(worldVertices);
@@ -189,11 +189,11 @@ public class BodyBuilder {
 	private void createEllipse(World world, EllipseMapObject ellipseObject, float density, float friction, float restitution){
 		Ellipse circle = ellipseObject.getEllipse();
 		CircleShape shape = new CircleShape();
-		shape.setRadius(circle.width / 2f / SupaBox.PPM);
+		shape.setRadius(circle.width / 2f / SupaBax.PPM);
 		
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.type = BodyType.StaticBody;
-		bodyDef.position.set(new Vector2((circle.x + circle.width / 2f) / SupaBox.PPM, (circle.y + circle.width / 2f) / SupaBox.PPM));
+		bodyDef.position.set(new Vector2((circle.x + circle.width / 2f) / SupaBax.PPM, (circle.y + circle.width / 2f) / SupaBax.PPM));
 		
 		Body body = world.createBody(bodyDef);
 		

@@ -30,7 +30,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  *
  */
 public class GameScreen implements Screen, InputProcessor {
-	private SupaBox game;
+	private SupaBax game;
 	
 	//to switch between debug rendering and normal rendering
 	private boolean debug = false;
@@ -57,7 +57,7 @@ public class GameScreen implements Screen, InputProcessor {
 	 * 
 	 * @param game
 	 */
-	public GameScreen(SupaBox game) {
+	public GameScreen(SupaBax game) {
 		this.game = game;
 		
 		//float aspectRatio = (float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getWidth();
@@ -77,7 +77,7 @@ public class GameScreen implements Screen, InputProcessor {
 		//load the tmx map
 		mapLoader = new TmxMapLoader();
 		map = mapLoader.load("crate.tmx");
-		mapRenderer = new OrthogonalTiledMapRenderer(map, 1f / SupaBox.PPM);
+		mapRenderer = new OrthogonalTiledMapRenderer(map, 1f / SupaBax.PPM);
 		
 		//build the box2d objects
 		bodyBuilder = new BodyBuilder();

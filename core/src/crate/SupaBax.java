@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  *
  */
 
-public class SupaBox extends Game {
+public class SupaBax extends Game {
 	SpriteBatch batch;
 	
 	//Screens
