@@ -26,48 +26,60 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 /**
  * @author Aaron
+ * @author Ryan
  *
  */
 public class GameScreen implements Screen, InputProcessor {
 	private SupaBox game;
 	
+	//to switch between debug rendering and normal rendering
 	private boolean debug = false;
 	
+	//box2d necessities
 	private Box2DDebugRenderer debugRenderer;
 	private World world;
 	private Array<Body> bodies = new Array<Body>();
 	private BodyBuilder bodyBuilder;
 	
+	//tmx map necessities
 	private TmxMapLoader mapLoader;
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer mapRenderer;
 	
+	//camera and viewport
 	private OrthographicCamera camera;
 	private Viewport viewport;
 	
+	//Entities in the game
 	public ArrayList<Entity> entities = new ArrayList<Entity>();
 
 	/**
 	 * 
+	 * @param game
 	 */
 	public GameScreen(SupaBox game) {
 		this.game = game;
 		
 		//float aspectRatio = (float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getWidth();
 		
+		//create the camera and setup the viewport
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(24, 16, camera);
 		viewport.apply();
 		
+		//move the camera to the center of the world
 		camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
 		
+		//setup box2d world
 		debugRenderer = new Box2DDebugRenderer();
 		world = new World(new Vector2(0, -9.8f), true);
 		
+		//load the tmx map
 		mapLoader = new TmxMapLoader();
 		map = mapLoader.load("crate.tmx");
 		mapRenderer = new OrthogonalTiledMapRenderer(map, 1f / SupaBox.PPM);
 		
+		//build the box2d objects
 		bodyBuilder = new BodyBuilder();
 		bodyBuilder.createBodies(entities, world, map);
 	}
@@ -94,7 +106,7 @@ public class GameScreen implements Screen, InputProcessor {
 	public void render(float delta) {
 		update(delta);
 		
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		if(!debug){
@@ -137,6 +149,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public void dispose() {
+		//dispose of all game entities
 		for(Entity entity : entities){
 			entity.dispose();
 		}

@@ -3,11 +3,20 @@ package crate;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+/**
+ * 
+ * @author Aaron
+ * @author Ryan
+ *
+ */
+
 public class SupaBox extends Game {
 	SpriteBatch batch;
 	
+	//Screens
 	public GameScreen gameScreen;
 	
+	//Pixels to meters conversion
 	public static final float PPM = 32;
 	
 	@Override

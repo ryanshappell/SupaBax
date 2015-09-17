@@ -28,7 +28,9 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 /**
+ * This class creates box2d objects defined in a tmx world through object layers.
  * @author Aaron
+ * @author Ryan
  *
  */
 public class BodyBuilder {
@@ -40,13 +42,15 @@ public class BodyBuilder {
 	}
 	
 	/**
-	 * 
+	 * Reads the objects from the tmx map and creates the corresponding box2d bodies for physics.
+	 * @param entities
 	 * @param world
 	 * @param map
 	 */
 	public void createBodies(ArrayList<Entity> entities, World world, TiledMap map){
 		MapObjects objects;
 		
+		//Retrieves objects from the ground layer
 		objects = map.getLayers().get("ground").getObjects();
 		for(MapObject object : objects){
 			if(object instanceof RectangleMapObject){
@@ -73,7 +77,7 @@ public class BodyBuilder {
 	}
 	
 	/**
-	 * 
+	 * Creates a rectangle box2d object in the box2d world with a specified density, friction, and restitution.
 	 * @param world
 	 * @param rectangleObject
 	 * @param density
@@ -103,7 +107,7 @@ public class BodyBuilder {
 	}
 	
 	/**
-	 * 
+	 * Creates a polygon box2d object in the box2d world with a specified density, friction, and restitution.
 	 * @param world
 	 * @param polygonObject
 	 * @param density
@@ -139,7 +143,7 @@ public class BodyBuilder {
 	}
 	
 	/**
-	 * 
+	 * Creates a chain box2d object in the box2d world with a specified density, friction, and restitution.
 	 * @param world
 	 * @param polylineObject
 	 * @param density
@@ -175,7 +179,7 @@ public class BodyBuilder {
 	}
 	
 	/**
-	 * 
+	 * Creates a circle box2d object in the box2d world with a specified density, friction, and restitution.
 	 * @param world
 	 * @param ellipseObject
 	 * @param density
